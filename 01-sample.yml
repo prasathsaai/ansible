@@ -3,19 +3,19 @@
   task: 
     - name: Print hello from task1
       ansible.builtin.debug:
-        msg:  Hai from task1 of Play1
+        msg:  Hai from task1 of play1
 
     - name: Print hello from playy1
       ansible.builtin.debug:
-        msg:  Hai from task2 of Play1
+        msg:  Hai from task2 of play1
 
 - name: Playbook name is Play2
   hosts:  all
   task:
     - name: hello from task1
       ansible.builtin.debug:
-        msg:  Hai from task1 of Play2
+        msg:  Hai from task1 of play2
 
     - name: hello from task2
       ansible.builtin.debug:
-        msg: Hai from the task2 of Play2
+        msg: Hai from the task2 of play2
