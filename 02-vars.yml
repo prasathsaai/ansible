@@ -1,5 +1,5 @@
 - name: demo on variables
-  hosts: all
+  hosts: prod
   vars:
       URL: play.google.com
   tasks:
