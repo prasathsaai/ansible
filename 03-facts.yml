@@ -1,7 +1,7 @@
 - name: demo for facts
   hosts: all
   tasks:
-    ansible.buildin.debug:
+    ansible.builtin.debug:
       - msg: OS Distrubtion is {{ansible_distribution}}
 
 
