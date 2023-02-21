@@ -1,0 +1,11 @@
+- name: demo for facts
+  hosts: all
+  tasks:
+    ansible.buildin.debug:
+      - msg: OS Distrubtion is {{ansible_distribution}}
+
+
+
+
+# Facts is nothing but properties (Mechine properties)
+# command to view the facts: ansible all -i inv -e ansible_user=centos -e ansible_password=DevOps321 -m setup
