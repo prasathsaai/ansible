@@ -3,7 +3,7 @@
   tasks:
     - name: printing OS Distrubtion
       ansible.builtin.debug:
-        - msg: OS Distrubtion is {{ansible_distribution}}
+        msg: OS Distrubtion is {{ansible_distribution}}
 
 
 
