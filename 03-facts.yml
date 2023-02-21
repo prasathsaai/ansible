@@ -5,8 +5,13 @@
       ansible.builtin.debug:
         msg: OS Distrubtion is {{ansible_distribution}}
 
+    - name: printing OS MAC address
+      ansible.builtin.debug:
+        msg: OS MAC is {{ansible_default_ipv4.macaddress}}
 
-
+    - name: printing OS IP address
+      ansible.builtin.debug:
+        msg: OS IP is {{ansible_default_ipv4.address}}
 
 # Facts is nothing but properties (Mechine properties)
 # command to view the facts: ansible all -i inv -e ansible_user=centos -e ansible_password=DevOps321 -m setup
