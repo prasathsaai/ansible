@@ -8,3 +8,8 @@
     - name: printing output of uptime
       ansible.builtin.debug:
         msg: "{{OUT.stdout}}"
+
+
+
+
+# Shell commend execution with ansible 

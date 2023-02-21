@@ -1,6 +1,3 @@
-[prod]
-172.31.61.223
+[frontend]
+frontend.awsdevops.internal
 
-
-[dev]
-172.31.54.74
