@@ -3,11 +3,3 @@
   become: yes # Previleges escalation to root
   roles:
     - frontend
-    #- mongodb
-    #- catalogue
-    #- cart
-    #- redis
-    #- mysql
-    #- shipping
-    #- rabbitmq
-    #- payment
