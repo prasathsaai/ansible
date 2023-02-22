@@ -1,0 +1,21 @@
+- name: Coping MongoDB Repo File
+  ansible.builtin.copy:
+    src: mongo.repo
+    dest: /etc/yum.repos.d/mongodb.repo
+    
+- name: Installing MongoDB Server
+  ansible.builtin.yum:
+    name: mongodb-org
+    state: present
+
+- name: Updating MongoDb Config
+  ansible.builtin.replace:
+    path: /etc/mongod.conf
+    regexp: '127.0.0.1'
+    replace: '0.0.0.0'
+
+- name: Starting Nginx Service
+  ansible.builtin.service:
+    name: mongod
+    state: restarted
+    enabled: yes
