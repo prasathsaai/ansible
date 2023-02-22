@@ -30,3 +30,20 @@
     src: /tmp/{{COMPONENT}}-main/
     dest: /home/{{APPUSER}}/{{COMPONENT}}/
     remote_src: yes
+  become_user: "{{APPUSER}}"
+
+- name: Install NodeJS packages based on package.json file 
+  community.general.npm:
+    path: home/{{APPUSER}}/{{COMPONENT}}/
+
+- name: Copying proxy config
+  ansible.builtin.copy:
+    src: systemd.service
+    dest: /etc/systemd/system/catalogue.service
+
+- name: Starting Catalogue Service
+  ansible.builtin.systemd:
+    name: "{{COMPONENT}}"
+    state: restarted
+    enabled: yes
+    daemon_reload:  yes
