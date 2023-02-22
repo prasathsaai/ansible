@@ -1,0 +1,13 @@
+- name: Roboshop project setup
+  hosts: all
+  became: yes # Previleges escalation to root
+  tasks:
+    - frontend
+    #- mongodb
+    #- catalogue
+    #- cart
+    #- redis
+    #- mysql
+    #- shipping
+    #- rabbitmq
+    #- payment
