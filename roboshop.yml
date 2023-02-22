@@ -1,5 +1,5 @@
 - name: Roboshop project setup
-  hosts: all
+  hosts: "{{COMPONENT}}"
   become: yes # Previleges escalation to root
   roles:
-    - frontend
+    - "{{COMPONENT}}"
