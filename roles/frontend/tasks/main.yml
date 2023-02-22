@@ -18,13 +18,13 @@
   ansible.builtin.copy:
     src: /tmp/frontend-main/static/
     dest: /usr/share/nginx/html
-    # remote_src: yes
+    remote_src: yes
 
 - name: Copying proxy config
   ansible.builtin.copy:
     src: roboshop.conf
     dest: /etc/nginx/default.d/roboshop.conf
-    remote_src: yes
+    # remote_src: yes
 
 - name: Starting Nginx Service
   ansible.builtin.service:
