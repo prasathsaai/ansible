@@ -21,3 +21,9 @@ mysql.awsdevops.internal
 
 [shipping]
 shipping.awsdevops.internal
+
+[rabbitmq]
+rabbitmq.awsdevops.internal
+
+[payment]
+payment.awsdevops.internal
