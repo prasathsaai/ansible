@@ -4,7 +4,7 @@
 - name: Installing {{COMPONENT}} & Erlang
   ansible.builtin.yum:
     name: 
-      - yum install https://github.com/rabbitmq/erlang-rpm/releases/download/v23.3.4.11/erlang-23.3.4.11-1.el7.x86_64.rpm
+      - https://github.com/rabbitmq/erlang-rpm/releases/download/v23.3.4.11/erlang-23.3.4.11-1.el7.x86_64.rpm
       - rabbitmq-server
     state: installed
 
