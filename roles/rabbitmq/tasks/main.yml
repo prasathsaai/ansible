@@ -1,0 +1,12 @@
+- name: Install Erlang for {{COMPONENT}}
+  ansible.builtin.package:
+    name: erlang
+    state: present
+
+- name: Setting up the yum repo for {{COMPONENT}}
+  ansible.builtin.shell: curl -s https://packagecloud.io/install/repositories/rabbitmq/rabbitmq-server/script.rpm.sh | sudo bash
+
+- name: Installing {{COMPONENT}}
+  ansible.builtin.yum:
+    name: rabbitmq-server
+    state: present
