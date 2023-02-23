@@ -1,15 +1,30 @@
-# - name: Install Erlang for {{COMPONENT}}
-#   ansible.builtin.package:
-#     name: erlang
-#     state: present
-
-- name: Setting up the Erlang for {{COMPONENT}}
-  ansible.builtin.shell: curl -s https://packagecloud.io/install/repositories/rabbitmq/erlang/script.rpm.sh | sudo bash
-
-- name: Setting up the yum repo for {{COMPONENT}}
+- name:  Set Up Yum Repos
   ansible.builtin.shell: curl -s https://packagecloud.io/install/repositories/rabbitmq/rabbitmq-server/script.rpm.sh | sudo bash
 
-- name: Installing {{COMPONENT}}
-  ansible.builtin.package:
-    name: rabbitmq-server
+- name: Installing {{COMPONENT}} & Erlang
+  ansible.builtin.yum:
+    name: 
+      - yum install https://github.com/rabbitmq/erlang-rpm/releases/download/v23.3.4.11/erlang-23.3.4.11-1.el7.x86_64.rpm
+      - rabbitmq-server
+    state: installed
+
+- name: Starting {{COMPONENT}} Service
+  ansible.builtin.service:
+    name: "{{COMPONENT}}-server"
+    state: started
+    enabled: yes
+
+- name: Creating {{APPUSER}} for {{COMPONENT}}
+  community.rabbitmq.rabbitmq_user:
+    user: "{{APPUSER}}"
+    password: roboshop123
+    vhost: /
+    configure_priv: .*
+    read_priv: .*
+    write_priv: .*
     state: present
+
+
+# - name: Setting up the Erlang for {{COMPONENT}}
+#   ansible.builtin.shell: yum install https://github.com/rabbitmq/erlang-rpm/releases/download/v23.3.4.11/erlang-23.3.4.11-1.el7.x86_64.rpm -y && yum install https://github.com/rabbitmq/rabbitmq-server/releases/download/v3.9.13/rabbitmq-server-3.9.13-1.el7.noarch.rpm -y
+
