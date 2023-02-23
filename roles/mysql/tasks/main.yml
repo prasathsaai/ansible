@@ -28,8 +28,8 @@
   when: mysql_stat.failed
   block:
     # This task should only execute if above task is a failure
-    - name: Reset default password 
-      ansible.builtin.shell: grep 'temporary_password' /var/log/mysqld.log | head -n 1 | awk -F " " '{print $NF}'
+    - name: Fetching Password 
+      ansible.builtin.shell: grep 'temporary' /var/log/mysqld.log | head -n 1 | awk -F " " '{print $NF}'
       register: DEFAULT_ROOT_PASSWORD
 
     - name: Coping the SQL Password command file
