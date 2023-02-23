@@ -1,0 +1,39 @@
+- name: Installing Python 
+  ansible.builtin.yum:
+    name: 
+      - python36 
+      - gcc 
+      - python3-devel
+    state: installed
+
+- name: Creating {{APPUSER}} for {{COMPONENT}}
+  ansible.builtin.include_role:
+    name: common
+    tasks_from: create-user
+
+- name: Downloading & Unzip the {{COMPONENT}} files
+  ansible.builtin.include_role:
+    name: common
+    tasks_from: download-and-extract
+
+- name: Installing {{COMPONENT}} Dependencies
+  ansible.builtin.pip:
+    requirements: /home/{{APPUSER}}/{{COMPONENT}}/requirements.txt
+    executable: pip3
+
+- name: Updating {{COMPONENT}}.ini file with {{APPUSER}} gid
+  ansible.builtin.lineinfile:
+    path: /home/{{APPUSER}}/{{COMPONENT}}/{{COMPONENT}}.ini
+    regexp: '^gid'
+    line: gid={{APPUSER_REGISTER.group}}
+
+- name: Updating {{COMPONENT}}.ini file with {{APPUSER}} uid
+  ansible.builtin.lineinfile:
+    path: /home/{{APPUSER}}/{{COMPONENT}}/{{COMPONENT}}.ini
+    regexp: '^uid'
+    line: uid={{APPUSER_REGISTER.uid}}
+
+- name: Configuring {{COMPONENT}} Service
+  ansible.builtin.include_role:
+    name: common
+    tasks_from: systemd-start-svc
