@@ -22,4 +22,4 @@
 - name: Configuring {{COMPONENT}} service
   ansible.builtin.include_role:
     name: common
-    tasks_from: systemd-start-scv
+    tasks_from: systemd-start-svc
