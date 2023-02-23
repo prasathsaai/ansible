@@ -12,3 +12,6 @@ redis.awsdevops.internal
 
 [user]
 user.awsdevops.internal
+
+[cart]
+cart.awsdevops.internal
