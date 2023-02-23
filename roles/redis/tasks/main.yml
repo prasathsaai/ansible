@@ -18,7 +18,7 @@
     - /etc/redis/redis.conf
 
 - name: Starting the {{COMPONENT}} services
-  ansible.builtin.services:
+  ansible.builtin.service:
     name: "{{COMPONENT}}"
     state: started
     enable: yes
