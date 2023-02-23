@@ -8,6 +8,13 @@
     name: mongodb-org
     state: present
 
+- name: Starting {{COMPONENT}} Service
+  ansible.builtin.systemd:
+    name: "{{COMPONENT}}"
+    state: started
+    enabled: yes
+    daemon_reload:  yes
+
 - name: Updating MongoDb Config
   ansible.builtin.replace:
     path: /etc/mongod.conf
