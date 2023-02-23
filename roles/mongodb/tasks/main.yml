@@ -8,12 +8,12 @@
     name: mongodb-org
     state: present
 
-- name: Starting {{COMPONENT}} Service
-  ansible.builtin.systemd:
-    name: "{{COMPONENT}}"
-    state: started
-    enabled: yes
-    daemon_reload:  yes
+# - name: Starting {{COMPONENT}} Service
+#   ansible.builtin.systemd:
+#     name: "{{COMPONENT}}"
+#     state: started
+#     enabled: yes
+#     daemon_reload:  yes
 
 - name: Updating MongoDb Config
   ansible.builtin.replace:
@@ -24,7 +24,7 @@
 - name: Starting MongoDB Service
   ansible.builtin.service:
     name: mongod
-    state: restarted
+    state: started
     enabled: yes
 
 - name: Downloading & Unzip the mongodb schema files
