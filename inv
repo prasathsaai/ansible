@@ -9,3 +9,6 @@ catalogue.awsdevops.internal
 
 [redis]
 redis.awsdevops.internal
+
+[user]
+user.awsdevops.internal
