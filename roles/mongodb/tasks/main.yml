@@ -1,9 +1,9 @@
-- name: Coping MongoDB Repo File
+- name: Coping {{COMPONENT}} Repo File
   ansible.builtin.copy:
     src: mongo.repo
     dest: /etc/yum.repos.d/mongodb.repo
     
-- name: Installing MongoDB Server
+- name: Installing {{COMPONENT}} Server
   ansible.builtin.yum:
     name: mongodb-org
     state: present
@@ -15,23 +15,22 @@
 #     enabled: yes
 #     daemon_reload:  yes
 
-- name: Updating MongoDb Config
+- name: Updating {{COMPONENT}} Config
   ansible.builtin.replace:
     path: /etc/mongod.conf
     regexp: '127.0.0.1'
     replace: '0.0.0.0'
 
-- name: Starting MongoDB Service
+- name: Starting {{COMPONENT}} Service
   ansible.builtin.service:
     name: mongod
     state: started
     enabled: yes
 
-- name: Downloading & Unzip the mongodb schema files
-  ansible.builtin.unarchive:
-    src: https://github.com/stans-robot-project/mongodb/archive/main.zip
-    dest: /tmp
-    remote_src: yes
+- name: Downloading & Unzip the {{COMPONENT}} schema files
+  ansible.builtin.include_role:
+    name: common
+    tasks_from: download-and-extract
 
 - name: Loading Catalogue Schema
   community.mongodb.mongodb_shell:
