@@ -6,3 +6,6 @@ mongodb.awsdevops.internal
 
 [catalogue]
 catalogue.awsdevops.internal
+
+[redis]
+redis.awsdevops.internal
