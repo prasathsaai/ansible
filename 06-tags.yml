@@ -1,0 +1,45 @@
+- name: Ansible tags 
+  hosts: localhost 
+  tasks:
+    - name: DB installation is Completed 
+      debug: 
+        msg: DB Installation is completed- NO TAG first
+
+    - name: Performing Webserver Installation 
+      debug: 
+        msg: WebServer Installation in progress-1
+      tags: web 
+
+    - name: Webserver installation is Completed 
+      debug: 
+        msg: WebServer Installation is completed-2
+      tags: web 
+
+    - name: Performing AppServer Installation 
+      debug: 
+        msg: APP Installation  in progress-1
+      tags: app 
+
+    - name: DB installation is Completed 
+      debug: 
+        msg: DB Installation is completed- NO TAG MID
+
+    - name: AppServer installation is Completed 
+      debug: 
+        msg: AppServer Installation is completed-2
+      tags: app 
+
+    - name: Performing DB Installation 
+      debug: 
+        msg: DB Installation  in progress-1
+      tags: db   
+
+    - name: DB installation is Completed 
+      debug: 
+        msg: DB Installation is completed-2
+      tags: db 
+
+    - name: DB installation is Completed 
+      debug: 
+        msg: DB Installation is completed- NO TAG LAST
+      
