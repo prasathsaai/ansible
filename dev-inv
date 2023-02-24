@@ -27,6 +27,3 @@ rabbitmq-dev.awsdevops.internal
 
 [payment]
 payment-dev.awsdevops.internal
-
-[dispatch]
-dispatch-dev.awsdevops.internal
