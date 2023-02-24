@@ -4,6 +4,9 @@
     - name: DB installation is Completed 
       debug: 
         msg: DB Installation is completed- NO TAG first
+      tags: 
+        - web
+        - app   
 
     - name: Performing Webserver Installation 
       debug: 
@@ -23,6 +26,10 @@
     - name: DB installation is Completed 
       debug: 
         msg: DB Installation is completed- NO TAG MID
+      tags:
+        - web
+        - app
+        - db
 
     - name: AppServer installation is Completed 
       debug: 
@@ -42,4 +49,7 @@
     - name: DB installation is Completed 
       debug: 
         msg: DB Installation is completed- NO TAG LAST
+      tags:
+        - app
+        - db
       
